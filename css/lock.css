@@ -1,0 +1,1249 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Emilys+Candy&family=Nunito:wght@500;600;700;800&family=Ribeye&display=swap");
+
+:root {
+  --lavender-violet: #7758A3;
+  --ruddy-blue: #66A5ED;
+  --ruddy-blue-light: #80BAF3;
+  --ruddy-blue-dark: #5794DC;
+
+  --honey-gold: #F6C45C;
+  --lavender-rose: #FFAFEB;
+  --deep-cerise: #DB3E8C;
+
+  --cream: #FFF9EA;
+  --cream-soft: rgba(255, 249, 234, 0.78);
+  --purple-deep: #49345F;
+
+  --shadow-soft:
+    0 16px 45px rgba(73, 52, 95, 0.16);
+
+  --shadow-button:
+    0 8px 20px rgba(73, 52, 95, 0.15);
+
+  --ease-out:
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  min-height: 100%;
+
+  font-family: "Nunito", sans-serif;
+}
+
+html {
+  background: var(--ruddy-blue);
+}
+
+body {
+  min-height: 100dvh;
+
+  color: var(--cream);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--ruddy-blue-light) 0%,
+      var(--ruddy-blue) 50%,
+      var(--ruddy-blue-dark) 100%
+    );
+}
+
+body.locked {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.site-layer {
+  position: relative;
+  z-index: 1;
+
+  min-height: 100dvh;
+}
+
+
+/* =========================================================
+   LOCK SCREEN
+   ========================================================= */
+
+.lock-screen {
+  position: fixed;
+  inset: 0;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    max(18px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(18px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(255, 175, 235, 0.44),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(246, 196, 92, 0.34),
+      transparent 20%
+    ),
+
+    radial-gradient(
+      circle at 85% 86%,
+      rgba(219, 62, 140, 0.24),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      circle at 10% 84%,
+      rgba(119, 88, 163, 0.22),
+      transparent 22%
+    ),
+
+    linear-gradient(
+      180deg,
+      #7AB8F2 0%,
+      var(--ruddy-blue) 50%,
+      var(--ruddy-blue-dark) 100%
+    );
+}
+
+
+/* Лёгкая текстура */
+
+.lock-screen::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  opacity: 0.08;
+
+  background-image:
+    repeating-radial-gradient(
+      circle at 0 0,
+      #ffffff 0,
+      #ffffff 1px,
+      transparent 1px,
+      transparent 4px
+    );
+
+  background-size: 8px 8px;
+
+  mix-blend-mode: soft-light;
+}
+
+
+/* =========================================================
+   LOCK PANEL
+   ========================================================= */
+
+.lock-panel {
+  position: relative;
+
+  z-index: 5;
+
+  width: min(440px, 100%);
+
+  padding: 24px 16px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.lock-title {
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+
+  line-height: 0.95;
+
+  white-space: nowrap;
+
+  user-select: none;
+}
+
+.letter {
+  display: inline-block;
+
+  margin-inline: -0.005em;
+
+  line-height: 1;
+
+  filter:
+    drop-shadow(
+      0 5px 8px
+      rgba(73, 52, 95, 0.14)
+    );
+}
+
+.l1,
+.l4,
+.l7 {
+  font-family: "Emilys Candy", serif;
+}
+
+.l2,
+.l5 {
+  font-family: "Berkshire Swash", cursive;
+}
+
+.l3,
+.l6 {
+  font-family: "Ribeye", serif;
+}
+
+.l1 {
+  font-size: clamp(42px, 11vw, 72px);
+  color: var(--lavender-rose);
+
+  transform:
+    translateY(-1px)
+    rotate(-3deg);
+}
+
+.l2 {
+  font-size: clamp(46px, 11vw, 76px);
+  color: var(--deep-cerise);
+
+  transform:
+    translateY(2px)
+    rotate(2deg);
+}
+
+.l3 {
+  font-size: clamp(40px, 10vw, 68px);
+  color: var(--cream);
+
+  transform:
+    translateY(-3px)
+    rotate(-1deg);
+}
+
+.l4 {
+  font-size: clamp(46px, 11vw, 75px);
+  color: var(--honey-gold);
+
+  transform:
+    translateY(1px)
+    rotate(3deg);
+}
+
+.l5 {
+  font-size: clamp(43px, 11vw, 72px);
+  color: var(--lavender-violet);
+
+  transform:
+    translateY(-2px)
+    rotate(-2deg);
+}
+
+.l6 {
+  font-size: clamp(41px, 10vw, 69px);
+  color: var(--lavender-rose);
+
+  transform:
+    translateY(2px)
+    rotate(2deg);
+}
+
+.l7 {
+  font-size: clamp(45px, 11vw, 74px);
+  color: var(--deep-cerise);
+
+  transform:
+    translateY(-2px)
+    rotate(-2deg);
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.lock-subtitle {
+  margin:
+    12px
+    0
+    26px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.24em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(255, 249, 234, 0.9);
+
+  text-shadow:
+    0 2px 5px
+    rgba(73, 52, 95, 0.12);
+}
+
+
+/* =========================================================
+   PIN DOTS
+   ========================================================= */
+
+.pin-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 13px;
+
+  min-height: 34px;
+
+  margin-bottom: 27px;
+}
+
+.dot {
+  position: relative;
+
+  width: 22px;
+  height: 22px;
+
+  border:
+    2px solid
+    rgba(255, 249, 234, 0.86);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 249, 234, 0.12);
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(255, 255, 255, 0.06);
+
+  transition:
+    transform 180ms var(--ease-out),
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.dot::before,
+.dot::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 7px;
+  height: 13px;
+
+  border-radius: 999px;
+
+  background: currentColor;
+
+  opacity: 0;
+
+  transition:
+    opacity 150ms ease,
+    transform 220ms var(--ease-out);
+}
+
+.dot::before {
+  transform:
+    translate(-50%, -50%)
+    rotate(0deg)
+    scale(0);
+}
+
+.dot::after {
+  transform:
+    translate(-50%, -50%)
+    rotate(90deg)
+    scale(0);
+}
+
+.dot.filled {
+  border-color:
+    rgba(255, 249, 234, 0.96);
+
+  background:
+    rgba(255, 249, 234, 0.2);
+
+  transform:
+    translateY(-2px)
+    scale(1.05);
+}
+
+.dot.filled::before,
+.dot.filled::after {
+  opacity: 1;
+}
+
+.dot.filled::before {
+  transform:
+    translate(-50%, -50%)
+    rotate(0deg)
+    scale(1);
+}
+
+.dot.filled::after {
+  transform:
+    translate(-50%, -50%)
+    rotate(90deg)
+    scale(1);
+}
+
+.dot:nth-child(1) {
+  color: var(--honey-gold);
+}
+
+.dot:nth-child(2) {
+  color: var(--lavender-rose);
+}
+
+.dot:nth-child(3) {
+  color: var(--deep-cerise);
+}
+
+.dot:nth-child(4) {
+  color: var(--lavender-violet);
+}
+
+
+/* =========================================================
+   PIN PAD
+   ========================================================= */
+
+.pin-pad {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 72px);
+
+  justify-content: center;
+
+  gap: 15px;
+}
+
+.pin-pad .pin-btn:last-child {
+  grid-column: 2;
+}
+
+.pin-btn {
+  position: relative;
+
+  width: 72px;
+  height: 72px;
+
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(255, 249, 234, 0.2);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 249, 234, 0.16);
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  box-shadow:
+    var(--shadow-button),
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.18);
+
+  color: var(--cream);
+
+  font-family: "Nunito", sans-serif;
+  font-size: 27px;
+  font-weight: 800;
+
+  font-variant-numeric:
+    tabular-nums;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  touch-action: manipulation;
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+  transition:
+    transform 110ms var(--ease-out),
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.pin-btn:hover {
+  background:
+    rgba(255, 249, 234, 0.26);
+
+  border-color:
+    rgba(255, 249, 234, 0.34);
+
+  box-shadow:
+    0 11px 24px
+    rgba(73, 52, 95, 0.2),
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.2);
+}
+
+.pin-btn:active {
+  transform:
+    translateY(2px)
+    scale(0.88);
+
+  background:
+    var(--honey-gold);
+
+  border-color:
+    var(--honey-gold);
+
+  color:
+    var(--purple-deep);
+
+  box-shadow:
+    0 4px 10px
+    rgba(73, 52, 95, 0.12);
+}
+
+.pin-btn:focus-visible {
+  outline:
+    3px solid
+    rgba(255, 249, 234, 0.9);
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   WRONG PIN
+   ========================================================= */
+
+.lock-screen.wrong-pin .pin-dots {
+  animation:
+    pin-shake
+    420ms
+    ease;
+}
+
+.lock-screen.wrong-pin .dot {
+  border-color:
+    rgba(219, 62, 140, 0.9);
+
+  background:
+    rgba(219, 62, 140, 0.2);
+
+  color:
+    var(--deep-cerise);
+}
+
+@keyframes pin-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-10px);
+  }
+
+  40% {
+    transform: translateX(10px);
+  }
+
+  60% {
+    transform: translateX(-6px);
+  }
+
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+
+/* =========================================================
+   SVG DECOR
+   ========================================================= */
+
+.decor {
+  position: absolute;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  color: var(--lavender-rose);
+
+  filter:
+    drop-shadow(
+      0 6px 10px
+      rgba(73, 52, 95, 0.12)
+    );
+
+  animation:
+    flower-float
+    5.5s
+    ease-in-out
+    infinite;
+}
+
+.flower-icon {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+.decor-1 {
+  top: 6%;
+  left: 5%;
+
+  width:
+    clamp(42px, 7vw, 76px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--lavender-rose);
+
+  animation-delay: 0s;
+}
+
+.decor-2 {
+  top: 8%;
+  right: 7%;
+
+  width:
+    clamp(34px, 6vw, 64px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--honey-gold);
+
+  animation-delay: -1.2s;
+}
+
+.decor-3 {
+  top: 27%;
+  left: 7%;
+
+  width:
+    clamp(27px, 5vw, 50px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--cream);
+
+  opacity: 0.86;
+
+  animation-delay: -2.4s;
+}
+
+.decor-4 {
+  top: 22%;
+  right: 10%;
+
+  width:
+    clamp(36px, 6vw, 66px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--lavender-violet);
+
+  animation-delay: -0.7s;
+}
+
+.decor-5 {
+  bottom: 15%;
+  left: 5%;
+
+  width:
+    clamp(54px, 9vw, 100px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--deep-cerise);
+
+  animation-delay: -1.8s;
+}
+
+.decor-6 {
+  bottom: 10%;
+  right: 5%;
+
+  width:
+    clamp(65px, 11vw, 120px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--lavender-rose);
+
+  animation-delay: -3s;
+}
+
+.decor-7 {
+  bottom: 6%;
+  left: 22%;
+
+  width:
+    clamp(28px, 5vw, 52px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--honey-gold);
+
+  animation-delay: -4s;
+}
+
+.decor-8 {
+  top: 44%;
+  right: 5%;
+
+  width:
+    clamp(25px, 4.5vw, 48px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--cream);
+
+  opacity: 0.85;
+
+  animation-delay: -2.1s;
+}
+
+.decor-9 {
+  top: 60%;
+  left: 4%;
+
+  width:
+    clamp(31px, 5vw, 58px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--lavender-rose);
+
+  animation-delay: -3.4s;
+}
+
+.decor-10 {
+  top: 62%;
+  right: 18%;
+
+  width:
+    clamp(23px, 4vw, 42px);
+
+  aspect-ratio: 1;
+
+  color:
+    var(--honey-gold);
+
+  animation-delay: -1s;
+}
+
+@keyframes flower-float {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: -2deg;
+  }
+
+  50% {
+    translate: 0 -9px;
+    rotate: 4deg;
+  }
+}
+
+
+/* =========================================================
+   FLORAL TRANSITION
+   ========================================================= */
+
+.floral-transition {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  opacity: 1;
+
+  clip-path:
+    circle(
+      0
+      at 50% 50%
+    );
+
+  background:
+    radial-gradient(
+      circle at 16% 18%,
+      rgba(255, 175, 235, 0.68),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      circle at 84% 16%,
+      rgba(246, 196, 92, 0.64),
+      transparent 24%
+    ),
+
+    radial-gradient(
+      circle at 85% 82%,
+      rgba(219, 62, 140, 0.54),
+      transparent 26%
+    ),
+
+    radial-gradient(
+      circle at 15% 84%,
+      rgba(119, 88, 163, 0.5),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      180deg,
+      #82BCF4 0%,
+      var(--ruddy-blue) 48%,
+      #5793DB 100%
+    );
+
+  will-change:
+    clip-path,
+    opacity;
+
+  transition:
+    clip-path
+    1.35s
+    var(--ease-out),
+
+    opacity
+    700ms
+    ease;
+}
+
+.floral-transition.grow {
+  clip-path:
+    circle(
+      150vmax
+      at 50% 50%
+    );
+}
+
+.floral-transition.fade-away {
+  opacity: 0;
+}
+
+
+/* =========================================================
+   TRANSITION FLOWERS
+   ========================================================= */
+
+.transition-flower {
+  position: absolute;
+
+  display: block;
+
+  width:
+    clamp(
+      70px,
+      12vw,
+      190px
+    );
+
+  height: auto;
+
+  aspect-ratio: 1;
+
+  overflow: visible;
+
+  opacity: 0.95;
+
+  color:
+    var(--lavender-rose);
+
+  transform:
+    scale(0.2)
+    rotate(0deg);
+
+  filter:
+    drop-shadow(
+      0 12px 18px
+      rgba(73, 52, 95, 0.18)
+    );
+
+  will-change:
+    transform,
+    opacity;
+
+  transition:
+    transform
+    1.25s
+    var(--ease-out),
+
+    opacity
+    600ms
+    ease;
+}
+
+.tf1 {
+  top: 2%;
+  left: 2%;
+
+  width:
+    clamp(
+      110px,
+      20vw,
+      300px
+    );
+
+  color:
+    var(--lavender-rose);
+}
+
+.tf2 {
+  top: 2%;
+  right: 2%;
+
+  width:
+    clamp(
+      90px,
+      17vw,
+      250px
+    );
+
+  color:
+    var(--honey-gold);
+}
+
+.tf3 {
+  bottom: 1%;
+  left: 1%;
+
+  width:
+    clamp(
+      130px,
+      23vw,
+      340px
+    );
+
+  color:
+    var(--deep-cerise);
+}
+
+.tf4 {
+  right: 0;
+  bottom: 0;
+
+  width:
+    clamp(
+      140px,
+      25vw,
+      370px
+    );
+
+  color:
+    var(--lavender-violet);
+}
+
+.tf5 {
+  top: 32%;
+  left: 14%;
+
+  width:
+    clamp(
+      65px,
+      10vw,
+      150px
+    );
+
+  color:
+    var(--cream);
+}
+
+.tf6 {
+  top: 27%;
+  right: 13%;
+
+  width:
+    clamp(
+      80px,
+      12vw,
+      180px
+    );
+
+  color:
+    var(--lavender-rose);
+}
+
+.tf7 {
+  bottom: 27%;
+  left: 21%;
+
+  width:
+    clamp(
+      75px,
+      11vw,
+      170px
+    );
+
+  color:
+    var(--honey-gold);
+}
+
+.tf8 {
+  right: 21%;
+  bottom: 29%;
+
+  width:
+    clamp(
+      65px,
+      10vw,
+      160px
+    );
+
+  color:
+    var(--cream);
+}
+
+.floral-transition.grow .tf1 {
+  transform:
+    scale(1.55)
+    rotate(18deg);
+}
+
+.floral-transition.grow .tf2 {
+  transform:
+    scale(1.7)
+    rotate(-20deg);
+}
+
+.floral-transition.grow .tf3 {
+  transform:
+    scale(1.75)
+    rotate(-15deg);
+}
+
+.floral-transition.grow .tf4 {
+  transform:
+    scale(1.7)
+    rotate(22deg);
+}
+
+.floral-transition.grow .tf5 {
+  transform:
+    scale(1.4)
+    rotate(-25deg);
+}
+
+.floral-transition.grow .tf6 {
+  transform:
+    scale(1.55)
+    rotate(25deg);
+}
+
+.floral-transition.grow .tf7 {
+  transform:
+    scale(1.45)
+    rotate(18deg);
+}
+
+.floral-transition.grow .tf8 {
+  transform:
+    scale(1.5)
+    rotate(-20deg);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .lock-panel {
+    padding:
+      18px 8px;
+  }
+
+  .lock-subtitle {
+    margin-bottom:
+      23px;
+  }
+
+  .pin-dots {
+    margin-bottom:
+      24px;
+  }
+
+  .pin-pad {
+    grid-template-columns:
+      repeat(3, 66px);
+
+    gap:
+      13px;
+  }
+
+  .pin-btn {
+    width:
+      66px;
+
+    height:
+      66px;
+
+    font-size:
+      25px;
+  }
+
+  .decor-3,
+  .decor-8,
+  .decor-10 {
+    opacity:
+      0.65;
+  }
+}
+
+@media (max-width: 360px) {
+  .pin-pad {
+    grid-template-columns:
+      repeat(3, 61px);
+
+    gap:
+      11px;
+  }
+
+  .pin-btn {
+    width:
+      61px;
+
+    height:
+      61px;
+
+    font-size:
+      23px;
+  }
+
+  .pin-dots {
+    margin-bottom:
+      20px;
+  }
+
+  .lock-subtitle {
+    margin-bottom:
+      20px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+  .lock-panel {
+    width:
+      480px;
+  }
+
+  .pin-pad {
+    grid-template-columns:
+      repeat(3, 76px);
+
+    gap:
+      17px;
+  }
+
+  .pin-btn {
+    width:
+      76px;
+
+    height:
+      76px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .decor {
+    animation: none;
+  }
+
+  .pin-btn,
+  .dot,
+  .transition-flower,
+  .floral-transition {
+    transition-duration:
+      1ms !important;
+  }
+
+  .lock-screen.wrong-pin .pin-dots {
+    animation-duration:
+      1ms;
+  }
+}
